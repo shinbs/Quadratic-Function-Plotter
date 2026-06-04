@@ -7,7 +7,7 @@ st.set_page_config(page_title="Quadratic Function Plotter", layout="centered")
 # Title
 st.title("Quadratic Function Plotter")
 
-st.markdown("Adjust the sliders to modify the quadratic function:")
+st.markdown("Adjust the sliders to modify the quadratic function, then click **Plot Graph** to draw it.")
 
 # --- Slider Inputs ---
 a = st.slider("Coefficient a", min_value=-5.0, max_value=5.0, value=1.0, step=0.1)
@@ -17,18 +17,19 @@ c = st.slider("Coefficient c", min_value=-20.0, max_value=20.0, value=3.0, step=
 # --- Display LaTeX formula ---
 st.latex(f"y = {a}x^2 + {b}x + {c}")
 
-# --- Plot ---
-x = np.linspace(-10, 10, 400)
-y = a * x**2 + b * x + c
+# --- Button to trigger plot ---
+if st.button("Plot Graph", type="primary"):
+      x = np.linspace(-10, 10, 400)
+      y = a * x**2 + b * x + c
 
-fig, ax = plt.subplots()
-ax.plot(x, y, label=fr"$y = {a}x^2 + {b}x + {c}$", color="blue")
-ax.axhline(0, color='black', linewidth=0.5)
-ax.axvline(0, color='black', linewidth=0.5)
-ax.set_xlabel("x")
-ax.set_ylabel("y")
-ax.set_title("Graph of the Quadratic Function")
-ax.grid(True)
-ax.legend()
+    fig, ax = plt.subplots()
+    ax.plot(x, y, label=fr"$y = {a}x^2 + {b}x + {c}$", color="blue")
+    ax.axhline(0, color='black', linewidth=0.5)
+    ax.axvline(0, color='black', linewidth=0.5)
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    ax.set_title("Graph of the Quadratic Function")
+    ax.grid(True)
+    ax.legend()
 
-st.pyplot(fig)
+    st.pyplot(fig)
