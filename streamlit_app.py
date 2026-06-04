@@ -19,8 +19,8 @@ st.latex(f"y = {a}x^2 + {b}x + {c}")
 
 # --- Button to trigger plot ---
 if st.button("Plot Graph", type="primary"):
-      x = np.linspace(-10, 10, 400)
-      y = a * x**2 + b * x + c
+    x = np.linspace(-10, 10, 400)
+    y = a * x**2 + b * x + c
 
     fig, ax = plt.subplots()
     ax.plot(x, y, label=fr"$y = {a}x^2 + {b}x + {c}$", color="blue")
